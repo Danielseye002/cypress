@@ -1,0 +1,30 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^12.12.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-multi-reporters": "^1.5.0"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^2.4.0",
+    "cypress-xpath": "^2.0.1",
+    "mocha": "^9.1.1",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "scripts": {
+    "cleanup": "rm -fr cypress/reports/mochawesome-html-report",
+    "merge_reports": "mochawesome-merge cypress/reports/mochawesome-report/*.json > output.json",
+    "mochawesome_report": "marge --reportDir cypress/reports/mochawesome-html-report -t Cypress_Test_Report -p Cypress_HMTL_Report -f Cypress_HMTL_Report --timestamp mmddyyyy_HHMMss --charts true output.json",
+    "cy:report": "npm run cleanup && cypress run && npm run merge_reports && npm run mochawesome_report",
+    "cypress:open": "cypress open",
+    "report": "npx cypress run --headed --spec cypress/e2e/ecommerce/search.cy.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
